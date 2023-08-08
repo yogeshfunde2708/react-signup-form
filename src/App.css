@@ -1,38 +1,82 @@
-.App {
-  text-align: center;
+
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500&display=swap');
+body {
+    background-image: linear-gradient(-225deg, #b4ecdc 0%, #f475db 100%);
+    background-image: linear-gradient(to top, #20e6dc 0%, #f67aa1 100%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    opacity: .95;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+nav {
+   margin: auto;
+   background: white;
+   background-color: black;
+   font-family: 'Playfair Display', serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+main {
+    
+    font-family: 'kanit', serif;
+    width:60%;
+    margin: 40px auto;
+    justify-content: space-between;
+
+}
+#clear-btn{
+   margin-left: 10px;
+}
+#add-name-btn{
+    padding: 6px 30px 6px 30px;
+}
+.card-body{
+    background-image: linear-gradient(-225deg, #b9ebdc 50%, #f0d4ea 50%);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.form-control{
+    float: left;
 }
 
-.App-link {
-  color: #61dafb;
+table {
+    margin: 2px;
+    text-align: center;
+
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+table,
+th,
+td {
+    border-collapse: collapse;
+    border: 1px solid black;
+    padding: auto;
+    
+}
+.table-responsive{
+    background-image: linear-gradient(-225deg, #b9ebdc 50%, #f0d4ea 50%);
+    
+}
+.p-3{
+    background-color: black;
+    font-family: 'Playfair Display', serif;
+
+    /* background: white; */
+    /* background: rgb(34,193,195);
+    background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%); */
+}
+
+
+#update-row-btn{
+     padding: 6px 30px 6px 30px;
+}
+
+@media screen and (max-width: 350px) {
+
+    main {
+        width: 100%;
+
+    }
+
+    h5 {
+        font-size: 20px;
+    }
 }
