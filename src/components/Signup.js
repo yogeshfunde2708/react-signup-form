@@ -1,26 +1,29 @@
 import React from 'react'
 // import Axios from "axios";
 
-export default function login() {
-//     const [email, setEmail] = useState("");
-//   const [name, setName] = useState("");
-//   const [gender, setGender] = useState("");
-//   const [password, setPassword] = useState("");
-//   const [confirmpassword, setConfirmPassword] = useState("");
-//   const [insertRowIntoTable, setInsertRowIntoTable] = useState("");
+export default function Signup() {
 
-//   const addBtn = (e) => {
-//     e.preventDefault();
-//     Axios.post("http://localhost:5000/insert", {
-//       email: email,
-//       name: name,
-//       gender:gender,
-//       password: password,
-//       confirmpassword: confirmpassword
-//     }).then((response) => response.json())
-//     .then((data) => setInsertRowIntoTable(data["data"]));
-//   }
+    
+  //     const [email, setEmail] = useState("");
+  //   const [name, setName] = useState("");
+  //   const [gender, setGender] = useState("");
+  //   const [password, setPassword] = useState("");
+  //   const [confirmpassword, setConfirmPassword] = useState("");
+  //   const [insertRowIntoTable, setInsertRowIntoTable] = useState("");
 
+  //   const addBtn = (e) => {
+  //     e.preventDefault();
+  //     Axios.post("http://localhost:5000/insert", {
+  //       email: email,
+  //       name: name,
+  //       gender:gender,
+  //       password: password,
+  //       confirmpassword: confirmpassword
+  //     }).then((response) => response.json())
+  //     .then((data) => setInsertRowIntoTable(data["data"]));
+  //   }
+
+  
   return (
     <main className="mb-2 text-white overflow-auto">
     <form className="needs-validation" novalidate>
@@ -123,6 +126,6 @@ export default function login() {
         </div>
       </div>
     </form>
-    </main>
+  </main>
   )
 }
