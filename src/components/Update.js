@@ -1,6 +1,47 @@
 import React from "react";
+// import Axios from "axios";
 
-export default function Update() {
+export default function Update(props) {
+  // const [updateData, handleUpdate] = () => {
+  //   const {
+  //     id,
+  //     name,
+  //     email,
+  //     gender,
+  //     password,
+  //     confirmPassword,
+  //   } = updateData;
+
+  //   if (!name || !email || !gender || !password || !confirmPassword) {
+  //     alert('Please fill in all fields');
+  //     return;
+  //   }
+
+  //   if (password !== confirmPassword) {
+  //     alert('Password did not match, please try again');
+  //     return;
+  //   }
+  //   Axios.fetch('http://localhost:5000/update', {
+  //     method: 'PATCH',
+  //     headers: {
+  //       'Content-type': 'application/json',
+  //     },
+  //     body: JSON.stringify({
+  //       id: id,
+  //       name: name,
+  //       email: email,
+  //       gender: gender,
+  //       password: password,
+  //       confirmpassword: confirmPassword,
+  //     }),
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       if (data.success) {
+  //         window.location.reload();
+  //       }
+  //     });
+  // };
   return (
     <main className="mb-2 text-white overflow-auto">
       <div className="card text-dark row g-3" hidden id="update-row">
@@ -12,8 +53,10 @@ export default function Update() {
               <input
                 className="form-control col-10 mx-auto"
                 type="text"
+                // onChange={handleChange}
                 id="update-email-input"
                 placeholder="update-email"
+                // value={updateData.email}
               />
               <br />
             </div>
@@ -24,6 +67,8 @@ export default function Update() {
                 type="text"
                 id="update-name-input"
                 placeholder="update-name"
+                // onChange={handleChange}
+                // value={updateData.name}
               />
               <br />
             </div>
@@ -33,8 +78,11 @@ export default function Update() {
               <input
                 className="form-control col-10 mx-auto"
                 placeholder="Enter-Password"
+                // onChange={handleChange}
                 type="password"
                 id="update-password-input"
+                // value={updateData.password}
+
               />
               <br />
             </div>
@@ -43,30 +91,40 @@ export default function Update() {
               <input
                 className="form-control col-10 mx-auto"
                 placeholder="Confirm-Password"
+                // onChange={handleChange}
                 type="password"
                 id="update-confirm-password"
+                // value={updateData.confirmpassword}
               />
               <br />
             </div>
 
             <div>
               <label>Edit Gender:</label>{" "}
-              <input type="radio" id="update-male" name="gender" value="Male" />{" "}
-              <label htmlFor="male">Male</label>{" "}
-              <input
-                type="radio"
-                id="update-female"
-                name="gender"
-                value="Female"
-              />{" "}
-              <label htmlFor="female">Female</label>
+              <select
+                  className="form-select col-10 mx-auto"
+                  aria-label="Default select example"
+                  name="gender"
+                  // value={updateData.gender}
+                  // onChange={handleChange}
+                >
+                  <option value="">Select</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                </select>
               <br />
             </div>
 
             <div className="text-center">
-              <a href="/" id="update-row-btn" className="btn btn-primary">
+              <button
+                id="update-row-btn"
+                className="btn btn-primary mt-0"
+                type="submit"
+                // onClick={handleUpdate}
+              >
                 Update
-              </a>
+              </button>
             </div>
           </div>
         </div>
