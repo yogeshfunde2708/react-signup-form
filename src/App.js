@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-// import Axios from "axios";
 import Navbar from "./components/Navbar";
 import Signup from "./components/Signup";
 import Footer from "./components/Footer";
@@ -11,8 +10,11 @@ import Axios from "axios";
 function App() {
   const [users, setUsers] = useState([]);
 
+const [updateRow, setUpdateRow] = useState(null)
+
   const getUsers = () => {
-    Axios.get("http://localhost:5000/getAll").then((response) => {
+    Axios.get("http://localhost:5000/getAll")
+    .then((response) => {
       if (response && response.data) {
         const users = response.data.data;
         setUsers(users);
@@ -24,14 +26,18 @@ function App() {
     return () => {};
   }, []);
 
+  const handleUpdateClick = (ID) => {
+    setUpdateRow(ID);
+  };
+ 
   return (
     <>
       <Navbar getUsers={getUsers}/>
       <br></br>
       <br></br>
       <Signup getUsers={getUsers} />
-      <Table users={users} />
-      <Update   />
+      <Table users={users} handleUpdateClick={handleUpdateClick} />
+      <Update  updateRow={updateRow} getUsers={getUsers} />
       <Footer />
     </>
   );

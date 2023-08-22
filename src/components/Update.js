@@ -1,50 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 // import Axios from "axios";
 
-export default function Update(props) {
-  // const [updateData, handleUpdate] = () => {
-  //   const {
-  //     id,
-  //     name,
-  //     email,
-  //     gender,
-  //     password,
-  //     confirmPassword,
-  //   } = updateData;
+export default function Update({getUsers, updateRow}) {
+  // const [updateData, setUpdateData] = useState({
+  //   id: "",
+  //   name: "",
+  //   email: "",
+  //   gender: "",
+  //   password: "",
+  //   confirmpassword: "",
+  // });
+  
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setUpdateData({ ...updateData, [name]: value });
+  // };
+  // const handleUpdate = () => {
+  //   const { name, email, gender, password, confirmpassword } = updateData;
 
-  //   if (!name || !email || !gender || !password || !confirmPassword) {
-  //     alert('Please fill in all fields');
+  //   if (!name || !email || !gender || !password || !confirmpassword) {
+  //     alert("Please fill in all fields");
   //     return;
   //   }
 
-  //   if (password !== confirmPassword) {
-  //     alert('Password did not match, please try again');
+  //   if (password !== confirmpassword) {
+  //     alert("Password did not match, please try again");
   //     return;
   //   }
-  //   Axios.fetch('http://localhost:5000/update', {
-  //     method: 'PATCH',
-  //     headers: {
-  //       'Content-type': 'application/json',
-  //     },
-  //     body: JSON.stringify({
-  //       id: id,
-  //       name: name,
-  //       email: email,
-  //       gender: gender,
-  //       password: password,
-  //       confirmpassword: confirmPassword,
-  //     }),
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       if (data.success) {
-  //         window.location.reload();
-  //       }
-  //     });
+  //   Axios.patch("http://localhost:5000/update")
+  //   .then((response) => {
+  //     if (response && response.data) {
+  //       getUsers();
+  //     }
+  //   });
   // };
   return (
     <main className="mb-2 text-white overflow-auto">
-      <div className="card text-dark row g-3" hidden id="update-row">
+      <div
+        className={`card text-dark row g-3 ${updateRow ? "" : "hidden"}`}
+    
+      >
         <div className="card text-dark">
           <div className="card-body row g-4">
             <h2 className="mt-3 text-center">Edit Here</h2>
@@ -53,10 +48,10 @@ export default function Update(props) {
               <input
                 className="form-control col-10 mx-auto"
                 type="text"
-                // onChange={handleChange}
                 id="update-email-input"
                 placeholder="update-email"
-                // value={updateData.email}
+                // onChange={handleChange}
+                // value={updateData.name.values}
               />
               <br />
             </div>
@@ -68,7 +63,7 @@ export default function Update(props) {
                 id="update-name-input"
                 placeholder="update-name"
                 // onChange={handleChange}
-                // value={updateData.name}
+                // value={updateData.name.values}
               />
               <br />
             </div>
@@ -81,8 +76,7 @@ export default function Update(props) {
                 // onChange={handleChange}
                 type="password"
                 id="update-password-input"
-                // value={updateData.password}
-
+                // value={updateData.password.values}
               />
               <br />
             </div>
@@ -94,7 +88,7 @@ export default function Update(props) {
                 // onChange={handleChange}
                 type="password"
                 id="update-confirm-password"
-                // value={updateData.confirmpassword}
+                // value={updateData.confirmpassword.values}
               />
               <br />
             </div>
@@ -102,17 +96,17 @@ export default function Update(props) {
             <div>
               <label>Edit Gender:</label>{" "}
               <select
-                  className="form-select col-10 mx-auto"
-                  aria-label="Default select example"
-                  name="gender"
-                  // value={updateData.gender}
-                  // onChange={handleChange}
-                >
-                  <option value="">Select</option>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                  <option value="other">Other</option>
-                </select>
+                className="form-select col-10 mx-auto"
+                aria-label="Default select example"
+                name="gender"
+                // value={updateData.gender.values}
+                // onChange={handleChange}
+              >
+                <option value="">Select</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
               <br />
             </div>
 

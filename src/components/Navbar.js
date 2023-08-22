@@ -2,21 +2,31 @@ import React, { useState } from "react";
 import Axios from "axios";
 
 export default function Navbar(props) {
-  // const { getUsers } = props;
+  const { getUsers } = props;
+  const [searchValue, setSearchValue] = useState("");
 
-  const [values, getValues] = useState([]);
+  const handleChange = (e) => {
+    const {name, value} = e.target;
+    setSearchValue({...searchValue, [name]:value})
+  }
 
-  const handleSearch = () => {
-    if (!values) {
+  const searchBtn = (e) => {
+    e.preventDefault();
+    if (!searchValue) {
       alert("Please enter a search value");
       return;
     }
-    Axios.get(`http://localhost:5000/search/${values}`)
-    .then((response) => response.json())
-      .then((data) => getValues(data.values));
-      // getUsers();
-    
+    Axios.get("http://localhost:5000/search/:name",searchValue)
+    .then((response) => {
+      if (response && response.data) {
+        getUsers("");
+      }
+    });
   };
+  const handleClear = () => {
+    setSearchValue("");
+    getUsers("");
+  }
   return (
     <nav className="navbar navbar-expand-lg navbar-dark fixed-top p-2">
       <div className="container-fluid">
@@ -49,16 +59,15 @@ export default function Navbar(props) {
               type="search"
               placeholder="Search-By-Username"
               id="search-input"
-              // value={searchValue}
-              // onChange={(e) => setSearchValue(e.target.value)}
-              // onClick={handleSearch}
+              value={searchValue.name}
+              onChange={handleChange}
             />
 
             <button
               className="btn btn-outline-success"
               type="submit"
               id="search-btn"
-              onClick={handleSearch}
+              onClick={searchBtn}
             >
               Search
             </button>
@@ -67,6 +76,7 @@ export default function Navbar(props) {
               className="btn btn-outline-warning"
               type="submit"
               id="clear-btn"
+              onClick={handleClear}
             >
               Clear
             </button>
