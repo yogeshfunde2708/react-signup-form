@@ -36,7 +36,7 @@ function App() {
       <br></br>
       <br></br>
       <Signup getUsers={getUsers} />
-      <Table users={users} handleUpdateClick={handleUpdateClick} />
+      <Table users={users}  />
       <Update getUsers={getUsers} />
       <Footer />
     </>
