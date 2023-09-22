@@ -1,14 +1,15 @@
 import Axios from "axios";
 import React, { useState } from "react";
-// import Update from "./Update";
+import Update from "./Update";
 
 export default function Table(props) {
   const { users = [] } = props;
-  const [updateVisible, setUpdateVisible] = useState(false);
+  const [showUpdateForm, setShowUpdateForm] = useState(false);
 
-  const toggleUpdateVisibility = () => {
-    setUpdateVisible(!updateVisible);
+  const updateForm = () => {
+    setShowUpdateForm(!showUpdateForm);
   };
+
   const deleteBtn = (ID) => {
     const confirmDelete = window.confirm(
       "Are you sure you want to delete this user?"
@@ -59,7 +60,7 @@ export default function Table(props) {
                       data-gender={gender}
                       data-password={password}
                       data-confirmpassword={confirmpassword}
-                      onClick={toggleUpdateVisibility}
+                      onClick={updateForm}
                     >
                       Edit-Input-Fields
                     </button>
@@ -76,8 +77,10 @@ export default function Table(props) {
               )
             )}
           </tbody>
-        </table>
+        </table>    <br></br>
+      <br></br>
       </div>
+      {showUpdateForm && <Update /> }
     </main>
   );
 }

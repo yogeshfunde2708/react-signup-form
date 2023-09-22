@@ -1,45 +1,13 @@
 import React, { useState } from "react";
-// import Axios from "axios";
 
-export default function Update({getUsers, updateRow}) {
-  // const [updateData, setUpdateData] = useState({
-  //   id: "",
-  //   name: "",
-  //   email: "",
-  //   gender: "",
-  //   password: "",
-  //   confirmpassword: "",
-  // });
-  
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setUpdateData({ ...updateData, [name]: value });
-  // };
-  // const handleUpdate = () => {
-  //   const { name, email, gender, password, confirmpassword } = updateData;
+export default function Update(props) {
+  const { showUpdateForm} = props;
 
-  //   if (!name || !email || !gender || !password || !confirmpassword) {
-  //     alert("Please fill in all fields");
-  //     return;
-  //   }
-
-  //   if (password !== confirmpassword) {
-  //     alert("Password did not match, please try again");
-  //     return;
-  //   }
-  //   Axios.patch("http://localhost:5000/update")
-  //   .then((response) => {
-  //     if (response && response.data) {
-  //       getUsers();
-  //     }
-  //   });
-  // };
   return (
-    <main className="mb-2 text-white overflow-auto">
-      <div
-        className={`card text-dark row g-3 ${updateRow ? "" : "hidden"}`}
-    
-      >
+    // <>
+    <main className={`mb-2 text-white overflow-auto ${showUpdateForm ? "" : "hidden"}`} >
+    {/* <form > */}
+      <div className="card text-dark row g-3">
         <div className="card text-dark">
           <div className="card-body row g-4">
             <h2 className="mt-3 text-center">Edit Here</h2>
@@ -123,9 +91,11 @@ export default function Update({getUsers, updateRow}) {
           </div>
         </div>
       </div>
+      {/* </form> */}
       <br />
       <br />
       <br />
     </main>
+    //  </>
   );
 }
