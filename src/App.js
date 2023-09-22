@@ -32,7 +32,7 @@ function App() {
  
   return (
     <>
-      <Navbar getUsers={getUsers}/>
+      <Navbar getUsers={getUsers} setUsers={setUsers}/>
       <br></br>
       <br></br>
       <Signup getUsers={getUsers} />

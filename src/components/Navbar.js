@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import Axios from "axios";
 
 export default function Navbar(props) {
-  const { getUsers } = props;
+  const { getUsers, setUsers } = props;
   const [searchValue, setSearchValue] = useState("");
 
   const handleChange = (e) => {
-    const {name, value} = e.target;
-    setSearchValue({...searchValue, [name]:value})
+    const { value} = e.target;
+    setSearchValue(value);
   }
 
   const searchBtn = (e) => {
@@ -16,17 +16,19 @@ export default function Navbar(props) {
       alert("Please enter a search value");
       return;
     }
-    Axios.get("http://localhost:5000/search/:name",searchValue)
-    .then((response) => {
-      if (response && response.data) {
-        getUsers("");
+    Axios.get(`http://localhost:5000/search/${searchValue}`).then(
+      (response) => {
+        if (response && response.data) {
+          setUsers( response.data.data );
+          console.log(response.data)
+        }
       }
-    });
+    );
   };
   const handleClear = () => {
-    setSearchValue("");
+    searchValue("");
     getUsers("");
-  }
+  };
   return (
     <nav className="navbar navbar-expand-lg navbar-dark fixed-top p-2">
       <div className="container-fluid">
@@ -59,7 +61,7 @@ export default function Navbar(props) {
               type="search"
               placeholder="Search-By-Username"
               id="search-input"
-              value={searchValue.name}
+              value={searchValue}
               onChange={handleChange}
             />
 

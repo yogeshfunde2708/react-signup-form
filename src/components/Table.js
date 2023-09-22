@@ -3,17 +3,19 @@ import React, { useState } from "react";
 import Update from "./Update";
 
 export default function Table(props) {
-  const { users = [], getUsers} = props;
+  const { users = []} = props;
   const [updateVisible, setUpdateVisible] = useState(false);
 
   const toggleUpdateVisibility = () =>{
     setUpdateVisible(!updateVisible);
   }
-  const deleteBtn = (ID) => {
-    Axios.delete("http://localhost:5000/delete/",ID)
+  const deleteBtn = (id) => {
+    Axios.delete("http://localhost:5000/delete/",id)
     .then((response) => {
       if (response && response.data) {
-        getUsers();
+        console.log(deleteBtn);
+        // getUsers();
+        users();
       }
     });
   };
@@ -69,10 +71,10 @@ export default function Table(props) {
                   <td>
                     <button
                       className="delete-row-btn btn btn-danger"
-                      users-id={user.ID}
-                      onClick={()=>deleteBtn(user.ID)}
+                      // users-id={user.ID}
+                      onClick={()=>deleteBtn(user._id)}
                     >
-                      Delete{" "}
+                      Delete
                     </button>
                   </td>
                 </tr>

@@ -21,19 +21,18 @@ export default function Signup(props) {
     e.preventDefault();
     const { email, name, gender, password, confirmpassword } = values;
     if (!email || !name || !gender || !password || !confirmpassword) {
-      alert('Please fill in all fields.');
+      alert("Please fill in all fields.");
     } else if (password !== confirmpassword) {
-      alert('Password did not match, Please try again.');
+      alert("Password did not match, Please try again.");
     } else {
-    Axios.post("http://localhost:5000/insert", values)
-    .then((response) => {
-      if (response && response.data) {
-        getUsers();
-        setValues(formObj);
-      }
-    });
+      Axios.post("http://localhost:5000/insert", values).then((response) => {
+        if (response && response.data) {
+          getUsers();
+          setValues(formObj);
+        }
+      });
+    }
   };
-}
 
   return (
     <main className="mb-2 text-white overflow-auto">
@@ -107,7 +106,7 @@ export default function Signup(props) {
                   value={values.confirmpassword}
                 />{" "}
               </div>
-<div></div>
+              <div></div>
               <div className="col-md-6 mt-1">
                 <label className="form-label">Select gender:</label>
                 <select
@@ -141,6 +140,3 @@ export default function Signup(props) {
     </main>
   );
 }
-
-
-
