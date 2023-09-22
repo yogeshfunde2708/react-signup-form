@@ -14,14 +14,11 @@ export default function Table(props) {
       "Are you sure you want to delete this user?"
     );
     if (confirmDelete) {
-      Axios.delete(`http://localhost:5000/delete/${ID}`)
-      .then((response) => {
+      Axios.delete(`http://localhost:5000/delete/${ID}`).then((response) => {
         if (response && response.data.data) {
-         
           window.location.reload();
         }
-      })
-   
+      });
     }
   };
 
@@ -70,7 +67,6 @@ export default function Table(props) {
                   <td>
                     <button
                       className="delete-row-btn btn btn-danger"
-                      // users-id={user.ID}
                       onClick={() => deleteBtn(user.ID)}
                     >
                       Delete
