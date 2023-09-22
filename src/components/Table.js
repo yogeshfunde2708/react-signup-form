@@ -1,9 +1,9 @@
 import Axios from "axios";
 import React, { useState } from "react";
-import Update from "./Update";
+// import Update from "./Update";
 
 export default function Table(props) {
-  const { users = [], setUsers } = props;
+  const { users = [] } = props;
   const [updateVisible, setUpdateVisible] = useState(false);
 
   const toggleUpdateVisibility = () => {
@@ -14,11 +14,14 @@ export default function Table(props) {
       "Are you sure you want to delete this user?"
     );
     if (confirmDelete) {
-      Axios.delete(`http://localhost:5000/delete/${ID}`).then((response) => {
+      Axios.delete(`http://localhost:5000/delete/${ID}`)
+      .then((response) => {
         if (response && response.data.data) {
+         
           window.location.reload();
         }
-      });
+      })
+   
     }
   };
 
@@ -78,7 +81,6 @@ export default function Table(props) {
             )}
           </tbody>
         </table>
-        <Update updateRow={updateVisible} />
       </div>
     </main>
   );

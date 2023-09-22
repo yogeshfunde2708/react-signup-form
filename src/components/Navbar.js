@@ -20,7 +20,6 @@ export default function Navbar(props) {
       (response) => {
         if (response && response.data) {
           setUsers( response.data.data );
-          console.log(response.data)
         }
       }
     );
