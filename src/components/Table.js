@@ -3,27 +3,24 @@ import React, { useState } from "react";
 import Update from "./Update";
 
 export default function Table(props) {
-  const { users = []} = props;
+  const { users = [], setUsers } = props;
   const [updateVisible, setUpdateVisible] = useState(false);
 
-  const toggleUpdateVisibility = () =>{
+  const toggleUpdateVisibility = () => {
     setUpdateVisible(!updateVisible);
-  }
-  const deleteBtn = (id) => {
-    Axios.delete("http://localhost:5000/delete/",id)
-    .then((response) => {
-      if (response && response.data) {
-        console.log(deleteBtn);
-        // getUsers();
-        users();
-      }
-    });
   };
-
-  // const handleUpdateClick = () = {
-
-  // }
-
+  const deleteBtn = (ID) => {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this user?"
+    );
+    if (confirmDelete) {
+      Axios.delete(`http://localhost:5000/delete/${ID}`).then((response) => {
+        if (response && response.data.data) {
+          window.location.reload();
+        }
+      });
+    }
+  };
 
   return (
     <main className="mb-2 text-white overflow-auto">
@@ -66,13 +63,12 @@ export default function Table(props) {
                     >
                       Edit-Input-Fields
                     </button>
-                
                   </td>
                   <td>
                     <button
                       className="delete-row-btn btn btn-danger"
                       // users-id={user.ID}
-                      onClick={()=>deleteBtn(user._id)}
+                      onClick={() => deleteBtn(user.ID)}
                     >
                       Delete
                     </button>
@@ -82,10 +78,8 @@ export default function Table(props) {
             )}
           </tbody>
         </table>
-        <Update updateRow={updateVisible}/>
+        <Update updateRow={updateVisible} />
       </div>
-      
     </main>
-    
   );
 }

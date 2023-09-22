@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Axios from "axios";
 
 export default function Navbar(props) {
-  const { getUsers, setUsers } = props;
+  const { users, setUsers } = props;
   const [searchValue, setSearchValue] = useState("");
 
   const handleChange = (e) => {
@@ -26,8 +26,7 @@ export default function Navbar(props) {
     );
   };
   const handleClear = () => {
-    searchValue("");
-    getUsers("");
+    setUsers(users)
   };
   return (
     <nav className="navbar navbar-expand-lg navbar-dark fixed-top p-2">

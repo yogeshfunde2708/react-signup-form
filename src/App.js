@@ -10,7 +10,6 @@ import Axios from "axios";
 function App() {
   const [users, setUsers] = useState([]);
 
-// const [updateRow, setUpdateRow] = useState(null)
 
   const getUsers = () => {
     Axios.get("http://localhost:5000/getAll")
@@ -26,17 +25,14 @@ function App() {
     return () => {};
   }, []);
 
-  // const handleUpdateClick = (ID) => {
-  //   setUpdateRow(ID);
-  // };
  
   return (
     <>
-      <Navbar getUsers={getUsers} setUsers={setUsers}/>
+      <Navbar users={users} setUsers={setUsers}/>
       <br></br>
       <br></br>
-      <Signup getUsers={getUsers} />
-      <Table users={users}  />
+      <Signup getUsers={getUsers} setUsers={setUsers} />
+      <Table users={users} setUsers={setUsers}  />
       <Update getUsers={getUsers} />
       <Footer />
     </>
