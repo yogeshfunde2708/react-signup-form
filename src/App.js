@@ -28,11 +28,11 @@ function App() {
  
   return (
     <>
-      <Navbar users={users} setUsers={setUsers}/>
+      <Navbar users={users} setUsers={setUsers} getUsers={getUsers}/>
       <br></br>
       <br></br>
       <Signup getUsers={getUsers} setUsers={setUsers} />
-      <Table users={users} setUsers={setUsers}  />
+      <Table users={users} getUsers={getUsers}  />
       <Update getUsers={getUsers} />
       <Footer />
     </>

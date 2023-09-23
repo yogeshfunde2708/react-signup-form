@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Update from "./Update";
 
 export default function Table(props) {
-  const { users = [] } = props;
+  const { users = [], getUsers} = props;
   const [showUpdateForm, setShowUpdateForm] = useState(false);
 
   const updateForm = () => {
@@ -16,8 +16,8 @@ export default function Table(props) {
     );
     if (confirmDelete) {
       Axios.delete(`http://localhost:5000/delete/${ID}`).then((response) => {
-        if (response && response.data.data) {
-          window.location.reload();
+        if (response && response.data) {
+          getUsers();
         }
       });
     }
@@ -77,10 +77,11 @@ export default function Table(props) {
               )
             )}
           </tbody>
-        </table>    <br></br>
-      <br></br>
+        </table>{" "}
+        <br></br>
+        <br></br>
       </div>
-      {showUpdateForm && <Update /> }
+      {showUpdateForm && <Update />}
     </main>
   );
 }

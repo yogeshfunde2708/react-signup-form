@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import Axios from "axios";
 
 export default function Navbar(props) {
-  const { users, setUsers } = props;
+  const { users, setUsers, getUsers } = props;
   const [searchValue, setSearchValue] = useState("");
 
   const handleChange = (e) => {
-    const { value} = e.target;
+    const { value } = e.target;
     setSearchValue(value);
-  }
+  };
 
   const searchBtn = (e) => {
     e.preventDefault();
@@ -19,13 +19,18 @@ export default function Navbar(props) {
     Axios.get(`http://localhost:5000/search/${searchValue}`).then(
       (response) => {
         if (response && response.data) {
-          setUsers( response.data.data );
+          setUsers(response.data.data);
         }
       }
     );
   };
   const handleClear = () => {
-    setUsers(users)
+    setSearchValue("");
+    Axios.get("http://localhost:5000/getAll").then((response) => {
+      if (response && response.data) {
+        getUsers();
+      }
+    });
   };
   return (
     <nav className="navbar navbar-expand-lg navbar-dark fixed-top p-2">
