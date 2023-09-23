@@ -28,7 +28,7 @@ function App() {
  
   return (
     <>
-      <Navbar users={users} setUsers={setUsers} getUsers={getUsers}/>
+      <Navbar setUsers={setUsers} getUsers={getUsers}/>
       <br></br>
       <br></br>
       <Signup getUsers={getUsers} setUsers={setUsers} />

@@ -61,10 +61,10 @@ export default function Update(props) {
               <br />
             </div>
 
-            <div>
-              <label>Edit Gender:</label>{" "}
+            <div className="col-md-6 mt-1">
+              <label className="form-label">Edit Gender:</label>
               <select
-                className="form-select col-10 mx-auto"
+                className="form-select col-10 mx-auto float-left"
                 aria-label="Default select example"
                 name="gender"
                 // value={updateData.gender.values}
