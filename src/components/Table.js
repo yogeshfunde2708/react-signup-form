@@ -49,7 +49,7 @@ export default function Table(props) {
           </thead>
           <tbody>
             {users.map(
-              (user, i, ID, email, name, gender, password, confirmpassword) => (
+              (user, i) => (
                 <tr>
                   <td>{i + 1}</td>
                   <td>{user.ID}</td>
@@ -62,12 +62,6 @@ export default function Table(props) {
                   <td>
                     <button
                       className="edit-row-btn btn btn-success"
-                      // data-id={ID}
-                      // data-email={email}
-                      // data-name={name}
-                      // data-gender={gender}
-                      // data-password={password}
-                      // data-confirmpassword={confirmpassword}
                       onClick={updateForm(user)}
                     >
                       Edit-Input-Fields

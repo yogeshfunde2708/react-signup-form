@@ -4,21 +4,17 @@ import Axios from "axios";
 export default function Update(props) {
   const { showUpdateForm,user, onUpdate} = props;
   const [values, setValues] = useState(
-    // {
-    // ID: user.ID,
-    // name: user.name,
-    // email: user.email,
-    // gender: user.gender,
-    // password: user.password,
-    // confirmpassword: user.confirmpassword,
-  // }
+    {
+    ID: '',
+    name: '',
+    email: '',
+    password: '',
+    confirmpassword: '',
+  }
   );
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setValues({
-      ...values,
-      [name]: value,
-    });
+    setValues({ ...values, [name]: value});
   };
   const updateBtn = (e) => {
     e.preventDefault();
