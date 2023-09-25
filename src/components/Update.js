@@ -1,31 +1,40 @@
 import React, { useState } from "react";
 import Axios from "axios";
 
-export default function Update(props,) {
-  const { showUpdateForm,user,onUpdate} = props;
-  const [formData, setFormData] = useState({
-    ID: user.ID,
-    name: user.name,
-    email: user.email,
-    gender: user.gender,
-    password: user.password,
-    confirmpassword: user.confirmpassword,
-  });
+export default function Update(props) {
+  const { showUpdateForm,user, onUpdate} = props;
+  const [values, setValues] = useState(
+    // {
+    // ID: user.ID,
+    // name: user.name,
+    // email: user.email,
+    // gender: user.gender,
+    // password: user.password,
+    // confirmpassword: user.confirmpassword,
+  // }
+  );
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
+    setValues({
+      ...values,
       [name]: value,
     });
   };
-  const handleUpdate = () => {
+  const updateBtn = (e) => {
+    e.preventDefault();
+    const { email, name, gender, password, confirmpassword } = values;
+    if (!email || !name || !gender || !password || !confirmpassword) {
+      alert("Please fill in all fields.");
+    } else if (password !== confirmpassword) {
+      alert("Password did not match, Please try again.");
+    } else {
     Axios.patch(`http://localhost:5000/update`).then(
       (response) => {
         if (response && response.data) {
-          onUpdate(formData);
+          onUpdate(values);
         }
-      }
-    );
+      });
+    }
   };
   return (
     // <>
@@ -47,7 +56,7 @@ export default function Update(props,) {
                 id="update-email-input"
                 placeholder="update-email"
                 onChange={handleChange}
-                value={formData.email}
+                value={values.email}
               />
               <br />
             </div>
@@ -59,7 +68,7 @@ export default function Update(props,) {
                 id="update-name-input"
                 placeholder="update-name"
                 onChange={handleChange}
-                value={formData.name}
+                value={values.name}
               />
               <br />
             </div>
@@ -72,7 +81,7 @@ export default function Update(props,) {
                 onChange={handleChange}
                 type="password"
                 id="update-password-input"
-                value={formData.password}
+                value={values.password}
               />
               <br />
             </div>
@@ -84,7 +93,7 @@ export default function Update(props,) {
                 onChange={handleChange}
                 type="password"
                 id="update-confirm-password"
-                value={formData.confirmpassword}
+                value={values.confirmpassword}
               />
               <br />
             </div>
@@ -95,7 +104,7 @@ export default function Update(props,) {
                 className="form-select col-10 mx-auto float-left"
                 aria-label="Default select example"
                 name="gender"
-                value={formData.gender}
+                value={values.gender}
                 onChange={handleChange}
               >
                 <option value="">Select</option>
@@ -111,7 +120,7 @@ export default function Update(props,) {
                 id="update-row-btn"
                 className="btn btn-primary mt-0"
                 type="submit"
-                onClick={handleUpdate}
+                onClick={updateBtn}
               >
                 Update
               </button>

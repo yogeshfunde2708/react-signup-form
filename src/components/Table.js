@@ -14,7 +14,7 @@ export default function Table(props) {
     // setShowUpdateForm(!showUpdateForm);
   };
  
-  const handleUpdate= ()=>{
+  const updateBtn= ()=>{
     setShowUpdateForm(false);
   }
 
@@ -89,7 +89,7 @@ export default function Table(props) {
         <br></br>
         <br></br>
       </div>
-      {showUpdateForm && <Update user={selectedUser} onUpdate={handleUpdate} />}
+      {showUpdateForm && <Update user={selectedUser} onUpdate={updateBtn} />}
     </main>
   );
 }
