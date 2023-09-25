@@ -33,7 +33,7 @@ function App() {
       <br></br>
       <Signup getUsers={getUsers} setUsers={setUsers} />
       <Table users={users} getUsers={getUsers}  />
-      <Update getUsers={getUsers} />
+      <Update getUsers={getUsers} users={users} />
       <Footer />
     </>
   );

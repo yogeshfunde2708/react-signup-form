@@ -5,10 +5,18 @@ import Update from "./Update";
 export default function Table(props) {
   const { users = [], getUsers} = props;
   const [showUpdateForm, setShowUpdateForm] = useState(false);
+  const [selectedUser, setSelectedUser] = useState(null);
+  
 
-  const updateForm = () => {
-    setShowUpdateForm(!showUpdateForm);
+  const updateForm = (user) => {
+    setSelectedUser(user);
+    setShowUpdateForm(true);
+    // setShowUpdateForm(!showUpdateForm);
   };
+ 
+  const handleUpdate= ()=>{
+    setShowUpdateForm(false);
+  }
 
   const deleteBtn = (ID) => {
     const confirmDelete = window.confirm(
@@ -54,13 +62,13 @@ export default function Table(props) {
                   <td>
                     <button
                       className="edit-row-btn btn btn-success"
-                      data-id={ID}
-                      data-email={email}
-                      data-name={name}
-                      data-gender={gender}
-                      data-password={password}
-                      data-confirmpassword={confirmpassword}
-                      onClick={updateForm}
+                      // data-id={ID}
+                      // data-email={email}
+                      // data-name={name}
+                      // data-gender={gender}
+                      // data-password={password}
+                      // data-confirmpassword={confirmpassword}
+                      onClick={updateForm(user)}
                     >
                       Edit-Input-Fields
                     </button>
@@ -81,7 +89,7 @@ export default function Table(props) {
         <br></br>
         <br></br>
       </div>
-      {showUpdateForm && <Update />}
+      {showUpdateForm && <Update user={selectedUser} onUpdate={handleUpdate} />}
     </main>
   );
 }

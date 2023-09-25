@@ -1,12 +1,40 @@
 import React, { useState } from "react";
+import Axios from "axios";
 
-export default function Update(props) {
-  const { showUpdateForm} = props;
-
+export default function Update(props,) {
+  const { showUpdateForm,user,onUpdate} = props;
+  const [formData, setFormData] = useState({
+    ID: user.ID,
+    name: user.name,
+    email: user.email,
+    gender: user.gender,
+    password: user.password,
+    confirmpassword: user.confirmpassword,
+  });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+  const handleUpdate = () => {
+    Axios.patch(`http://localhost:5000/update`).then(
+      (response) => {
+        if (response && response.data) {
+          onUpdate(formData);
+        }
+      }
+    );
+  };
   return (
     // <>
-    <main className={`mb-2 text-white overflow-auto ${showUpdateForm ? "" : "hidden"}`} >
-    {/* <form > */}
+    <main
+      className={`mb-2 text-white overflow-auto ${
+        showUpdateForm ? "" : "hidden"
+      }`}
+    >
+      {/* <form > */}
       <div className="card text-dark row g-3">
         <div className="card text-dark">
           <div className="card-body row g-4">
@@ -18,8 +46,8 @@ export default function Update(props) {
                 type="text"
                 id="update-email-input"
                 placeholder="update-email"
-                // onChange={handleChange}
-                // value={updateData.name.values}
+                onChange={handleChange}
+                value={formData.email}
               />
               <br />
             </div>
@@ -30,8 +58,8 @@ export default function Update(props) {
                 type="text"
                 id="update-name-input"
                 placeholder="update-name"
-                // onChange={handleChange}
-                // value={updateData.name.values}
+                onChange={handleChange}
+                value={formData.name}
               />
               <br />
             </div>
@@ -41,10 +69,10 @@ export default function Update(props) {
               <input
                 className="form-control col-10 mx-auto"
                 placeholder="Enter-Password"
-                // onChange={handleChange}
+                onChange={handleChange}
                 type="password"
                 id="update-password-input"
-                // value={updateData.password.values}
+                value={formData.password}
               />
               <br />
             </div>
@@ -53,10 +81,10 @@ export default function Update(props) {
               <input
                 className="form-control col-10 mx-auto"
                 placeholder="Confirm-Password"
-                // onChange={handleChange}
+                onChange={handleChange}
                 type="password"
                 id="update-confirm-password"
-                // value={updateData.confirmpassword.values}
+                value={formData.confirmpassword}
               />
               <br />
             </div>
@@ -67,8 +95,8 @@ export default function Update(props) {
                 className="form-select col-10 mx-auto float-left"
                 aria-label="Default select example"
                 name="gender"
-                // value={updateData.gender.values}
-                // onChange={handleChange}
+                value={formData.gender}
+                onChange={handleChange}
               >
                 <option value="">Select</option>
                 <option value="male">Male</option>
@@ -83,7 +111,7 @@ export default function Update(props) {
                 id="update-row-btn"
                 className="btn btn-primary mt-0"
                 type="submit"
-                // onClick={handleUpdate}
+                onClick={handleUpdate}
               >
                 Update
               </button>

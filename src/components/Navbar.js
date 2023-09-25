@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Axios from "axios";
 
 export default function Navbar(props) {
-  const { setUsers, getUsers } = props;
+  const { users, setUsers, getUsers } = props;
   const [searchValue, setSearchValue] = useState("");
 
   const handleChange = (e) => {
