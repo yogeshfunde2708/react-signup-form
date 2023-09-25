@@ -2,14 +2,15 @@ import React, { useState } from "react";
 import Axios from "axios";
 
 export default function Update(props) {
-  const { showUpdateForm,user, onUpdate} = props;
+  const { showUpdateForm, user, onUpdate} = props;
   const [values, setValues] = useState(
     {
-    ID: '',
-    name: '',
-    email: '',
-    password: '',
-    confirmpassword: '',
+      ID: user.ID,
+    name: user.name,
+    email: user.email,
+    password: user.password,
+    confirmpassword: user.confirmpassword,
+    gender: user.gender,
   }
   );
   const handleChange = (e) => {
@@ -24,10 +25,10 @@ export default function Update(props) {
     } else if (password !== confirmpassword) {
       alert("Password did not match, Please try again.");
     } else {
-    Axios.patch(`http://localhost:5000/update`).then(
+    Axios.patch(`http://localhost:5000/update/${values.ID}`,values).then(
       (response) => {
         if (response && response.data) {
-          onUpdate(values);
+          onUpdate();
         }
       });
     }
