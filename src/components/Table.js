@@ -62,7 +62,7 @@ export default function Table(props) {
                   <td>
                     <button
                       className="edit-row-btn btn btn-success"
-                      onClick={updateForm(user)}
+                      onClick={()=>updateForm(user)}
                     >
                       Edit-Input-Fields
                     </button>
