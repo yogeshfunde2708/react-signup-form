@@ -8,8 +8,8 @@ export default function Table(props) {
   const [selectedUser, setSelectedUser] = useState(null);
   
 
-  const updateForm = (user) => {
-    setSelectedUser(user);
+  const updateForm = (users) => {
+    setSelectedUser(users);
     setShowUpdateForm(true);
     // setShowUpdateForm(!showUpdateForm);
   };

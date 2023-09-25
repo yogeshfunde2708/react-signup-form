@@ -2,15 +2,16 @@ import React, { useState } from "react";
 import Axios from "axios";
 
 export default function Update(props) {
-  const { showUpdateForm, user, onUpdate} = props;
+  const { showUpdateForm, users, onUpdate} = props;
+  console.log(users);
   const [values, setValues] = useState(
     {
-      ID: user.ID,
-    name: user.name,
-    email: user.email,
-    password: user.password,
-    confirmpassword: user.confirmpassword,
-    gender: user.gender,
+    ID: users.ID,
+    name: users.name,
+    email: users.email,
+    password: users.password,
+    confirmpassword: users.confirmpassword,
+    gender: users.gender,
   }
   );
   const handleChange = (e) => {
@@ -27,7 +28,7 @@ export default function Update(props) {
     } else {
     Axios.patch(`http://localhost:5000/update/${values.ID}`,values).then(
       (response) => {
-        if (response && response.data) {
+        if (response && response.data.data) {
           onUpdate();
         }
       });
