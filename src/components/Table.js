@@ -11,7 +11,6 @@ export default function Table(props) {
   const updateForm = (users) => {
     setSelectedUser(users);
     setShowUpdateForm(true);
-    // setShowUpdateForm(!showUpdateForm);
   };
  
   const updateBtn= ()=>{
@@ -83,7 +82,7 @@ export default function Table(props) {
         <br></br>
         <br></br>
       </div>
-      {showUpdateForm && <Update user={selectedUser} onUpdate={updateBtn} />}
+      {showUpdateForm ? <Update user={selectedUser} onUpdate={updateBtn} />: null}
     </main>
   );
 }
