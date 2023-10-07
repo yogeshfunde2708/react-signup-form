@@ -81,8 +81,9 @@ export default function Table(props) {
         </table>{" "}
         <br></br>
         <br></br>
+        {showUpdateForm ? <Update user={selectedUser} onUpdate={updateBtn} />: null}
       </div>
-      {showUpdateForm ? <Update user={selectedUser} onUpdate={updateBtn} />: null}
+      {/* {showUpdateForm ? <Update user={selectedUser} onUpdate={updateBtn} />: null} */}
     </main>
   );
 }

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Axios from "axios";
-
 export default function Update(props) {
   const { showUpdateForm, users, onUpdate} = props;
   console.log(users);
