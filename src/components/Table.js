@@ -3,20 +3,15 @@ import React, { useState } from "react";
 import Update from "./Update";
 
 export default function Table(props) {
-  const { users = [], getUsers} = props;
+  const { users = [], getUsers,setUsers} = props;
   const [showUpdateForm, setShowUpdateForm] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
   
-
   const updateForm = (users) => {
     setSelectedUser(users);
     setShowUpdateForm(true);
   };
  
-  const updateBtn= ()=>{
-    setShowUpdateForm(false);
-  }
-
   const deleteBtn = (ID) => {
     const confirmDelete = window.confirm(
       "Are you sure you want to delete this user?"
@@ -81,9 +76,8 @@ export default function Table(props) {
         </table>{" "}
         <br></br>
         <br></br>
-        {showUpdateForm ? <Update user={selectedUser} onUpdate={updateBtn} />: null}
       </div>
-      {/* {showUpdateForm ? <Update user={selectedUser} onUpdate={updateBtn} />: null} */}
+      {showUpdateForm ? <Update users={selectedUser} setUsers={setUsers} />: null}
     </main>
   );
 }

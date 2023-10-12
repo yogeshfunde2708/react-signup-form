@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 import Axios from "axios";
 export default function Update(props) {
-  const { showUpdateForm, users, onUpdate} = props;
+  const { showUpdateForm, users} = props;
   console.log(users);
-  const [values, setValues] = useState({
-    ID: users.ID,
+  const [values, setValues] = useState(
+    {
+    ID : users.ID,
     name: users.name,
     email: users.email,
     password: users.password,
     confirmpassword: users.confirmpassword,
     gender: users.gender,
-  });
+  }
+  );
   const handleChange = (e) => {
     const { name, value } = e.target;
     setValues({ ...values, [name]: value});
@@ -26,19 +28,18 @@ export default function Update(props) {
     Axios.patch(`http://localhost:5000/update/${values.ID}`,values).then(
       (response) => {
         if (response && response.data.data) {
-          onUpdate();
         }
       });
     }
   };
   return (
-    // <>
+    <>
     <main
       className={`mb-2 text-white overflow-auto ${
         showUpdateForm ? "" : "hidden"
       }`}
     >
-      {/* <form > */}
+      <form >
       <div className="card text-dark row g-3">
         <div className="card text-dark">
           <div className="card-body row g-4">
@@ -50,6 +51,7 @@ export default function Update(props) {
                 type="text"
                 id="update-email-input"
                 placeholder="update-email"
+                name="email"
                 onChange={handleChange}
                 value={values.email}
               />
@@ -62,6 +64,7 @@ export default function Update(props) {
                 type="text"
                 id="update-name-input"
                 placeholder="update-name"
+                name="name"
                 onChange={handleChange}
                 value={values.name}
               />
@@ -75,6 +78,7 @@ export default function Update(props) {
                 placeholder="Enter-Password"
                 onChange={handleChange}
                 type="password"
+                name="password"
                 id="update-password-input"
                 value={values.password}
               />
@@ -87,6 +91,7 @@ export default function Update(props) {
                 placeholder="Confirm-Password"
                 onChange={handleChange}
                 type="password"
+                name="confirmpassword"
                 id="update-confirm-password"
                 value={values.confirmpassword}
               />
@@ -123,11 +128,11 @@ export default function Update(props) {
           </div>
         </div>
       </div>
-      {/* </form> */}
+      </form>
       <br />
       <br />
       <br />
     </main>
-    //  </>
+     </>
   );
 }

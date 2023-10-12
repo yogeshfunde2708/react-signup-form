@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar";
 import Signup from "./components/Signup";
 import Footer from "./components/Footer";
 import Table from "./components/Table";
-import Update from "./components/Update";
+// import Update from "./components/Update";
 import Axios from "axios";
 
 function App() {
@@ -32,8 +32,7 @@ function App() {
       <br></br>
       <br></br>
       <Signup getUsers={getUsers} setUsers={setUsers} />
-      <Table users={users} getUsers={getUsers}  />
-      <Update getUsers={getUsers} users={users} />
+      <Table users={users} getUsers={getUsers} setUsers={setUsers}  />
       <Footer />
     </>
   );
