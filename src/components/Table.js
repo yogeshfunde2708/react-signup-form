@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Update from "./Update";
 
 export default function Table(props) {
-  const { users = [], getUsers,setUsers} = props;
+  const { users = [], getUsers} = props;
   const [showUpdateForm, setShowUpdateForm] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
   
@@ -77,7 +77,7 @@ export default function Table(props) {
         <br></br>
         <br></br>
       </div>
-      {showUpdateForm ? <Update users={selectedUser} setUsers={setUsers} />: null}
+      {showUpdateForm ? <Update users={selectedUser} getUsers={getUsers} />: null}
     </main>
   );
 }
