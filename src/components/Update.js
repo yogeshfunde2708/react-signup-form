@@ -43,10 +43,10 @@ export default function Update(props) {
       }`}
     >
       <form>
-        <div className="card text-dark row g-3">
+        <div className="card text-dark">
           <div className="card text-dark">
             <div className="card-body row g-4">
-              <h2 className="mt-3 text-center">Edit Here</h2>
+              <h2 className="text-center mt-3">Edit Here</h2>
               <div className="col-md-6">
                 <label>Edit Email:</label>
                 <input
