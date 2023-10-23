@@ -35,7 +35,7 @@ export default function Signup(props) {
   };
 
   return (
-    <main className="mb-2 text-white overflow-auto">
+    <main className="mb-2 text-white overflow-auto ">
       <form className="needs-validation">
         <div className="card text-dark">
           <div className="card-body">

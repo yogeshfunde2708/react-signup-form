@@ -3,15 +3,15 @@ import React, { useState } from "react";
 import Update from "./Update";
 
 export default function Table(props) {
-  const { users = [], getUsers} = props;
+  const { users = [], getUsers } = props;
   const [showUpdateForm, setShowUpdateForm] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
-  
+
   const updateForm = (users) => {
     setSelectedUser(users);
     setShowUpdateForm(true);
   };
- 
+
   const deleteBtn = (ID) => {
     const confirmDelete = window.confirm(
       "Are you sure you want to delete this user?"
@@ -26,24 +26,24 @@ export default function Table(props) {
   };
 
   return (
-    <main className="mb-2 text-white overflow-auto">
-      <div className="table-responsive">
-        <table id="table" className="table table-bordered overflow-auto">
-          <thead>
-            <th>Sr No.</th>
-            <th>ID</th>
-            <th>Email</th>
-            <th>Username</th>
-            <th>Gender</th>
-            <th>Password</th>
-            <th>Confirm-Password</th>
-            <th>Date-Added</th>
-            <th>Edit-Input-Fields</th>
-            <th>Delete</th>
-          </thead>
-          <tbody>
-            {users.map(
-              (user, i) => (
+    <>
+      <main className="mb-2 text-white overflow-auto">
+        <div className="table-responsive">
+          <table id="table" className="table table-bordered overflow-auto">
+            <thead>
+              <th>Sr No.</th>
+              <th>ID</th>
+              <th>Email</th>
+              <th>Username</th>
+              <th>Gender</th>
+              <th>Password</th>
+              <th>Confirm-Password</th>
+              <th>Date-Added</th>
+              <th>Edit-Input-Fields</th>
+              <th>Delete</th>
+            </thead>
+            <tbody>
+              {users.map((user, i) => (
                 <tr>
                   <td>{i + 1}</td>
                   <td>{user.ID}</td>
@@ -56,7 +56,7 @@ export default function Table(props) {
                   <td>
                     <button
                       className="edit-row-btn btn btn-success"
-                      onClick={()=>updateForm(user)}
+                      onClick={() => updateForm(user)}
                     >
                       Edit-Input-Fields
                     </button>
@@ -70,14 +70,16 @@ export default function Table(props) {
                     </button>
                   </td>
                 </tr>
-              )
-            )}
-          </tbody>
-        </table>{" "}
-        <br></br>
-        <br></br>
-      </div>
-      {showUpdateForm ? <Update users={selectedUser} getUsers={getUsers} />: null}
-    </main>
+              ))}
+            </tbody>
+          </table>{" "}
+          <br></br>
+          <br></br>
+        </div>
+      </main>
+      {showUpdateForm ? (
+          <Update users={selectedUser} getUsers={getUsers} />
+        ) : null}y
+    </>
   );
 }

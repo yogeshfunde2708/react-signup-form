@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Axios from "axios";
 
 export default function Update(props) {
-  const { showUpdateForm, users, getUsers } = props;
+  const { showUpdateForm, users } = props;
   const formObj = {
     ID: users.ID,
     name: users.name,
@@ -12,6 +12,7 @@ export default function Update(props) {
     gender: users.gender,
   };
   
+  const { getUsers } = props;
   const [values, setValues] = useState(formObj);
   const handleChange = (e) => {
     const { name, value } = e.target;
