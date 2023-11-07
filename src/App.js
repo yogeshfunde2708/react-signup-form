@@ -8,8 +8,6 @@ import Axios from "axios";
 
 function App() {
   const [users, setUsers] = useState([]);
-
-
   const getUsers = () => {
     Axios.get("http://localhost:5000/getAll")
     .then((response) => {

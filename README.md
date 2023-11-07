@@ -1,3 +1,25 @@
+Project Title
+Sign Up Form
+input your detail email, username, gender and password to sign up to the page.
+
+Programming languages
+HTML, CSS, JavaScript, ReactJS, Node.js, Bootstrap, MySQL
+
+deployment
+step 1:- Git clone https://github.com/yogeshfunde2708/react-signup-form.git
+
+step 2:- cd react-signup-form
+
+step 3:-installation
+run: npm install
+
+
+How to run the project 
+step 1:- run previous project(NodeJsProject1) for backend as same as for this project
+step 2:-open (sign-up-form) in new terminal.
+step 3:- get command (npm start), You can now view sign-up-form in the browser.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

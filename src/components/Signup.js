@@ -25,7 +25,8 @@ export default function Signup(props) {
     } else if (password !== confirmpassword) {
       alert("Password did not match, Please try again.");
     } else {
-      Axios.post("http://localhost:5000/insert", values).then((response) => {
+      Axios.post("http://localhost:5000/insert", values)
+      .then((response) => {
         if (response && response.data) {
           getUsers();
           setValues(formObj);

@@ -4,7 +4,7 @@ import Axios from "axios";
 export default function Update(props) {
   const { showUpdateForm, users } = props;
   const formObj = {
-    ID: users.ID,
+    id: users.id,
     name: users.name,
     email: users.email,
     password: users.password,
@@ -26,14 +26,16 @@ export default function Update(props) {
     } else if (password !== confirmpassword) {
       alert("Password did not match, Please try again.");
     } else {
-      Axios.patch(`http://localhost:5000/update/${values.ID}`, values).then(
+      Axios.patch(`http://localhost:5000/update?id=${values.id}`,values.id )
+      .then(
         (response) => {
           if (response && response.data) {
             getUsers();
             setValues(formObj);
           }
         }
-      );
+      )
+      .catch(error=>console.log(error));
     }
   };
   return (
