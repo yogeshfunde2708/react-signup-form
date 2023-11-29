@@ -6,10 +6,15 @@ export default function Table(props) {
   const { users = [], getUsers } = props;
   const [showUpdateForm, setShowUpdateForm] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
+  const updateFormRef = React.createRef();
 
   const updateForm = (users) => {
     setSelectedUser(users);
     setShowUpdateForm(true);
+
+    if (updateFormRef.current) {
+      updateFormRef.current.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   const deleteBtn = (ID) => {
@@ -77,9 +82,12 @@ export default function Table(props) {
           <br></br>
         </div>
       </main>
+
       {showUpdateForm ? (
+        <div ref={updateFormRef}>
           <Update users={selectedUser} getUsers={getUsers} />
-        ) : null}y
+        </div>
+      ) : null}
     </>
   );
 }
